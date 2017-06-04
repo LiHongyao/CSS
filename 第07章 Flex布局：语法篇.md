@@ -270,6 +270,32 @@
 
 ## 5、flex
 
+  `flex` 属性是 `flex-grow`,  `flex-shrink` 和 `flex-basis`的简写，默认值为 `0 1 auto`。后两个属性可选。
+
+```css
+.item {
+  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+}
+```
+
+  该属性有两个快捷值：`auto` (`1 1 auto`) 和 none (`0 0 auto`)。
+
+  建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。
+
+## 6、align-self
+
+  align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+
+```css
+.item {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+```
+
+![](IMGS/flex_align_self.png)
+
+
+
 
 
 

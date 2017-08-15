@@ -14,9 +14,7 @@
 
 ![](IMGS/flex_support.jpg)
 
-  Flex 布局将成为未来布局的首选方案。本文介绍它的语法，[下一篇文章](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)给出常见布局的 Flex 写法。网友 [JailBreak](http://vgee.cn/) 为本文的所有示例制作了 [Demo](http://static.vgee.cn/static/index.html)，也可以参考。
-
-  以下内容主要参考了下面两篇文章：[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) 和 [A Visual Guide to CSS3 Flexbox Properties](https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties)。
+  Flex 布局将成为未来布局的首选方案，本文介绍它的语法。
 
 # 二、Flex 布局是什么？
 
@@ -295,6 +293,10 @@
 ![](IMGS/flex_align_self.png)
 
 
+
+# 六、友情链接
+
+- [Flex 布局新旧版本](http://blog.csdn.net/mutouafangzi/article/details/76797495?hmsr=funteas.com&utm_medium=funteas.com&utm_source=funteas.com)
 
 
 

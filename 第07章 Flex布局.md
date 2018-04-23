@@ -1,6 +1,6 @@
 > 本文参考 [阮一峰 Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool) 
 
-# 一、概述
+# # 概述
 
   网页布局（layout）是 CSS 的一个重点应用。
 
@@ -16,7 +16,7 @@
 
   Flex 布局将成为未来布局的首选方案，本文介绍它的语法。
 
-# 二、Flex 布局是什么？
+# # Flex 布局是什么？
 
   Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。
 
@@ -47,7 +47,7 @@
 
 > 注意：设为 Flex 布局以后，子元素的 `float`、`clear` 和 `vertical-align` 属性将失效。
 
-# 三、基本概念
+# # 基本概念
 
   采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
 
@@ -57,7 +57,7 @@
 
   项目默认沿主轴排列。单个项目占据的主轴空间叫做 `main size`，占据的交叉轴空间叫做 `cross size`。
 
-# 四、容器的属性
+# # 容器的属性
 
   以下6个属性设置在容器上：
 
@@ -211,7 +211,7 @@
 
 > 提示：为了美观，前面五个元素我都设置了 `margin:10px 0`，而 stretch 为了直观的显示其效果，我没有设置。
 
-# 五、元素的属性
+# # 元素的属性
 
   以下6个属性设置在子元素上：
 
@@ -301,7 +301,7 @@
 
 
 
-# 六、友情链接
+# # 友情链接
 
 - [Flex 布局新旧版本](http://blog.csdn.net/mutouafangzi/article/details/76797495?hmsr=funteas.com&utm_medium=funteas.com&utm_source=funteas.com)
 

@@ -68,7 +68,7 @@
 - align-items
 - align-content
 
-## 1、flex-direction
+## 1、flex-direction *
 
   `flex-direction` 属性决定主轴的方向（即子元素的排列方向）。
 
@@ -87,7 +87,7 @@
 - `column`：主轴为垂直方向，起点在上沿。
 - `column-reverse`：主轴为垂直方向，起点在下沿。
 
-## 2、flex-wrap
+## 2、flex-wrap *
 
   默认情况下，子元素都排在一条线（又称"轴线"）上。`flex-wrap` 属性定义，如果一条轴线排不下，如何换行。
 
@@ -124,7 +124,7 @@
 }
 ```
 
-## 4、justify-content
+## 4、justify-content *
 
   `justify-content` 属性定义了子元素在主轴上的对齐方式。
 
@@ -156,7 +156,7 @@
 
   ![](IMGS/flex_justify_content_space_around.png)
 
-## 5、align-items
+## 5、align-items *
 
   `align-items` 属性定义项目在交叉轴上如何对齐。
 
@@ -188,7 +188,7 @@
 
   ![](IMGS/flex_align_items_stretch.png)
 
-## 6、align-content
+## 6、align-content *
 
   `align-content ` 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
 
@@ -287,7 +287,7 @@
 
   建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。
 
-## 6、align-self
+## 6、align-self *
 
   align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
 

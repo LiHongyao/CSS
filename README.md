@@ -1,14 +1,26 @@
+- HTML：结构层
+- CSS：渲染层
+- JavaScript：行为层
+
 # # 简介
 
 CSS，全称“Cascading Style Sheets （层叠样式表）”，用于设置HTML标签的样式，它的基本结构如下：
 
 ![](IMGS/css.jpg)
 
+> 1. 语法解释：
+>
+> - 选择符：用于选取要设置样式的标签
+> - 样式属性：要设置什么样式
+> - 样式属性值：要设置的样式呈现什么效果
+>
+> 2. 注意：每一条样式后面必须加分号`;`。
+
 # # 引入方式
 
 使用样式表主要 有4种方式，即，“行内样式”、“内嵌样式”、“外链样式”、“导入式”。
 
-## 1、行内样式
+## 1、行内样式 *
 
 是将 “style” 作为一个标签的属性，然后通过它的值来设置样式。写法如下：
 
@@ -16,9 +28,9 @@ CSS，全称“Cascading Style Sheets （层叠样式表）”，用于设置HTM
 <div style="width: 300px; height: 300px; background-color: red;"></div>
 ```
 
-## 2、内嵌样式
+## 2、内嵌样式 *
 
-是将样式作为个标签放置于\<head>标签对以内，让浏览器在加载完成其它基本信息后，首先将样式给渲染出来。标签名为“\<style>”，若项目采用的是HTML严格模式/标准模式(standard mode)开发，那需要为该标签添加一个“type”属性，将值设为“text/css”。写法如下：
+是将“style”作为一个标签，然后在标签内通过样式选择符设置样式。
 
 ```html
 <!DOCTYPE html>
@@ -37,19 +49,19 @@ CSS，全称“Cascading Style Sheets （层叠样式表）”，用于设置HTM
 </html>
 ```
 
-## 3、外链样式
+## 3、外链样式 *
 
-同样是将\<link>放置于\<head>标签对以内，通过该标签的“href”属性的值去获取CSS文件的绝对/相对路径。该标签必须要具有“*rel*”属性，并且将值设为“*stylesheet*”，否则浏览器将不能正确的解析CSS文件进行样式渲染，写法如下：
+将样式单独放置在一个`.css`文件，然后在页面中通过 `<link>` 标签的 `href` 属性引入该样式文件。这样做的目的为了抽离CSS，便于维护和管理。
 
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<!-- 外链样式 -->
-	<link rel="stylesheet" href="stylesheets/index.css">
+	<link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
 	<div></div>
@@ -69,7 +81,7 @@ div {
 }
 ```
 
-需要注意的是，CSS文件开头需要设置一个编码格式，通常我们都是将其设为统一编码格式“UTF-8”（不区分大小写）。虽说不设置该值对CSS代码本身执行影响不大，但是在我们通过浏览器“开发者工具”查看CSS代码的时候，里面的“中文注释”会显示成乱码。其次，指定编码格式后的分号（`;`）不能省略。
+> 注意：css文件第一行代码需指定字符编码格式，防止出现乱码：`@charset "utf-8";`
 
 ## 4、导入式
 
@@ -77,12 +89,12 @@ div {
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
-		@import url(stylesheets/index.css);
+		@import(stylesheets/index.css);
 	</style>
 </head>
 <body>

@@ -6,7 +6,7 @@ CSS Grid 布局由两个核心组成部分是 **container**（父元素）和 **
 
 # # 基础
 
-一开始你需要使用 *display：grid；* 把容器元素定义为一个网格，使用 *grid-template-columns* 和*grid-template-rows* 设置列和行大小，然后使用 *grid-column*  和 *grid-row* 把它的子元素放入网格。 与flexbox类似，网格子元素的原始顺序不重要。 你的可以在 CSS 里以任意顺序放置它们，这使得使用媒体查询重新排列网格变得非常容易。 想象一下，我们需要定义整个页面的布局，然后为了适应不同的屏幕宽度完全重新排列，我们只需要几行CSS就能实现这个需求。 网格是有史以来最强大的CSS模块之一。
+一开始你需要使用 *display：grid；* 把容器元素定义为一个网格，使用 *grid-template-columns* 和*grid-template-rows* 设置列和行大小，然后使用 *grid-column*  和 *grid-row* 把它的子元素放入网格。 与flexbox类似，网格子元素的原始顺序不重要。 你可以在 CSS 里以任意顺序放置它们，这使得使用媒体查询重新排列网格变得非常容易。 想象一下，我们需要定义整个页面的布局，然后为了适应不同的屏幕宽度完全重新排列，我们只需要几行CSS就能实现这个需求。 网格是有史以来最强大的CSS模块之一。
 
 截至2017年3月，许多浏览器都提供了原生的、不加前缀的对CSS Grid的支持，比如 Chrome（包括Android），Firefox，Safari（包括iOS）和Opera。 另一方面，Internet Explorer 10和11支持它，但需要使用过时的语法。 Edge浏览器已经宣布将支持标准的Grid语法，但暂未支持
 
@@ -44,17 +44,25 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 
 这个分界线组成网格结构。 它们既可以是垂直的（“column grid lines”），也可以是水平的（“row grid lines”），并位于行或列的任一侧。 下面例中的黄线就是一个列网格线。
 
+![](./IMGS/grid-line.jpeg)
+
 ## 4. Grid Track
 
 两个相邻网格线之间的空间。 你可以把它们想象成网格的列或行。 下面是第二行和第三行网格线之间的网格轨道。
+
+![](./IMGS/grid-track.jpeg)
 
 ## 5. Grid Cell
 
 两个相邻的行和两个相邻的列网格线之间的空间。它是网格的一个“单元”。 下面是行网格线1和2之间以及列网格线2和3的网格单元。
 
+![](./IMGS/grid-cell.jpeg)
+
 ## 6. Grid Area 
 
 四个网格线包围的总空间。 网格区域可以由任意数量的网格单元组成。 下面是行网格线1和3以及列网格线1和3之间的网格区域。
+
+![](./IMGS/grid-area.jpeg)
 
 # # 网格容器属性
 
@@ -68,17 +76,29 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 }
 ```
 
-- grid： 生成一个块级（block-level）网格
-- inline-grid：生成一个行级（inline-level）网格
+- grid： 生成一个块级网格
+- inline-grid：生成一个行级网格
 - subgrid：如果是嵌套网格，你可以使用这个属性来表示你想从它的父节点获取它的行/列的大小，而不是指定它自己的大小。
 
 > 注意：`column`, `float`, `clear`, 以及 `vertical-align` 对一个 grid container 没有影响
 
 ## 02. grid-template-columns / grid-template-rows
 
-使用空格分隔的值列表，用来定义网格的列和行。这些值表示网格轨道(Grid Track) 大小（宽/高），它们之间的空格表示网格线。 
+使用以空格分隔的多个值来定义网格的列和行。这些值表示网格轨道(Grid Track) 大小（宽/高），它们之间的空格表示网格线。 
 
-```js
+```CSS
+.container {
+  grid-template-columns: <track-size> ... | <line-name> <track-size> ...;
+  grid-template-rows: <track-size> ... | <line-name> <track-size> ...;
+}
+```
+
+– `<track-size>`： 可以是长度值，百分比，或者等份网格容器中可用空间（使用 `fr` 单位）
+– `<line-name>`：你可以选择的任意名称
+
+示例：
+
+```CSS
 .container {
     display: grid;
     grid-template-columns: 200px 200px 200px;
@@ -89,10 +109,6 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 ![](IMGS/grid-basic.png)
 
 上述代码表示3列2行的网格，每一列的宽度为200px，高度为100px。
-
-值：
-– `<track-size>`： 可以是长度值，百分比，或者等份网格容器中可用空间（使用 `fr` 单位）
-– `<line-name>`：你可以选择的任意名称
 
 当你在 网格轨道(Grid Track) 值之间留出空格时，网格线会自动分配正数和负数名称：
 
@@ -130,7 +146,7 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 }
 ```
 
-`fr` 单元允许你用等分网格容器剩余可用空间来设置网格轨道(Grid Track) 的大小 。例如，下面的代码会将每个网格项设置为网格容器宽度的三分之一：
+`fr` 单位允许你用等分网格容器剩余可用空间来设置网格轨道(Grid Track) 的大小 。例如，下面的代码会将每个网格项设置为网格容器宽度的三分之一：
 
 ```js
 .container {

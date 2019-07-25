@@ -14,7 +14,7 @@ CSS，全称“Cascading Style Sheets （层叠样式表）”，用于设置HTM
 > - 样式属性：要设置什么样式
 > - 样式属性值：要设置的样式呈现什么效果
 >
-> 2. 注意：每一条样式后面必须加分号`;`。
+> 2. 注意：每一条样式后面必须加分号`;`
 
 # # 引入方式
 
@@ -30,11 +30,11 @@ CSS，全称“Cascading Style Sheets （层叠样式表）”，用于设置HTM
 
 ## 2、内嵌样式 *
 
-是将“style”作为一个标签，然后在标签内通过样式选择符设置样式。
+是将 **style** 作为一个标签，然后在标签内通过样式选择符设置样式。
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
@@ -94,7 +94,7 @@ div {
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
-		@import(stylesheets/index.css);
+		@import("./css/index.css");
 	</style>
 </head>
 <body>
@@ -103,7 +103,7 @@ div {
 </html>
 ```
 
-外链（ `link` ）与导入（ `@import` ）同是外部引用的方式，但他们却有以下区别:
+\# 外链（ `link` ）与导入（ `@import` ）同是外部引用的方式，但他们却有以下区别:
 
 1. \<link> 除了加载 CSS 文件以外，它还能加载其它类型文件，如“icon”、“index”、“rss”等，它还能通过将“rel”的值设置为“prefetch”执行文件的预加载，而“@import”只能加载CSS文件。
 2. \<link> 在现代的浏览器中是多线程加载的，也就是说在通过该标签加载一个文件的时候\<body>标签内的 DOM（文档对象模型） 也在执行同步的加载。而“@import”是一种“线性”的加载，加载效率不如\<link>的方式。

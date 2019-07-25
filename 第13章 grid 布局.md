@@ -19,11 +19,11 @@ CSS Grid 布局由两个核心组成部分是 **container**（父元素）和 **
 设置了 `display: gird ` 的元素。 这是所有grid item的直接父项。 在下面的例子中，`.container` 就是是 grid container。
 
 ```html
-<div class="container">
-  <div class="item item-1"></div>
-  <div class="item item-2"></div>
-  <div class="item item-3"></div>
-</div> 
+<ul class="container" style="display:grid;">
+  <li class="item item-1"></li>
+  <li class="item item-2"></li>
+  <li class="item item-3"></li>
+</ul> 
 ```
 
 ## 2. Grid Item
@@ -31,13 +31,11 @@ CSS Grid 布局由两个核心组成部分是 **container**（父元素）和 **
 Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `.sub-item`不是。
 
 ```html
-<div class="container">
-  <div class="item"></div> 
-  <div class="item">
-    <p class="sub-item"></p>
-  </div>
-  <div class="item"></div>
-</div>
+<ul class="container" style="display:grid;">
+  <li class="item"></li> 
+  <li class="item"><p class="sub-item"></p></li>
+  <li class="item"></li>
+</ul>
 ```
 
 ## 3. Grid Line
@@ -72,17 +70,14 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 
 ```css
 .container {
-  display: grid | inline-grid | subgrid;
+  display: grid | inline-grid;
 }
 ```
 
-- grid： 生成一个块级网格
+- grid： 生成一个块级网格 *
 - inline-grid：生成一个行级网格
-- subgrid：如果是嵌套网格，你可以使用这个属性来表示你想从它的父节点获取它的行/列的大小，而不是指定它自己的大小。
 
-> 注意：`column`, `float`, `clear`, 以及 `vertical-align` 对一个 grid container 没有影响
-
-## 02. grid-template-columns / grid-template-rows
+## 02. grid-template-columns、grid-template-rows
 
 使用以空格分隔的多个值来定义网格的列和行。这些值表示网格轨道(Grid Track) 大小（宽/高），它们之间的空格表示网格线。 
 
@@ -175,6 +170,58 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 - `<grid-area-name>`：由网格项的 [`grid-area`](https://www.css88.com/archives/8510#prop-grid-area) 指定的网格区域名称
 - `.`（点号） ：代表一个空的网格单元
 - `none`：不定义网格区域
+
+```html
+<div class="container">
+    <header class="head">头部</header>
+    <div class="ct">内容</div>
+    <aside class="aside">侧边栏</aside>
+    <footer class="foot">尾部</footer>
+</div>
+```
+
+```css
+.container {
+    width: 1100px;
+    margin: 10px auto;
+    color: #fff;
+    display: grid;
+    grid-template-rows: 150px 500px 200px;
+    grid-template-columns: 90% 10%;
+    grid-template-areas:
+        "header header"
+        "ct aside"
+        "footer footer";
+}
+
+/* 头部 */
+.head {
+    background: #555;
+    grid-area: header;
+}
+
+/* 尾部 */
+.foot {
+    background: #555;
+    grid-area: footer;
+}
+
+/* 内容 */
+.ct {
+    background: pink;
+    grid-area: ct;
+}
+
+/* 侧边栏 */
+.aside {
+    background: orange;
+    grid-area: aside;
+}
+```
+
+效果如下：
+
+![](./IMGS/grid-template-areas.png)
 
 ## 04. grid-gap
 
@@ -391,8 +438,6 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 > 注意：除 Edge 之外的所有主要浏览器都支持 `place-content` 简写属性。
 
 ## 11. grid-auto-columns / grid-auto-rows
-
-
 
 # # 网格项属性
 

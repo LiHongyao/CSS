@@ -1,6 +1,10 @@
-一、概述
+# 一、概述
 
 Grid 布局是网站设计的基础，CSS Grid 是创建网格布局最强大和最简单的工具。它是一个二维的基于网格的布局系统，其目的只在于完全改变我们设计基于网格的用户界面的方式。 CSS一直用来布局网页，但一直都不完美。 一开始我们使用table 做布局，然后转向浮动、定位以及inline-block，但所有这些方法本质上都是 Hack 的方式，并且遗漏了很多重要的功能（例如垂直居中）。 Flexbox的出现在一定程度上解决了这个问题，但是它的目的是为了更简单的一维布局，而不是复杂的二维布局（Flexbox和Grid实际上一起工作得很好）。 只要我们一直在制作网站，我们就一直在为解决布局问题不断探索， 而Grid是第一个专门为解决布局问题而生的CSS模块。
+
+![](./IMGS/grid.png)
+
+上图这样的布局，就是 Grid 布局的拿手好戏。
 
 CSS Grid 布局由两个核心组成，分别是 **container**（父元素）和 **items**（子元素）。 container 是实际的 grid（网格），items 是 grid（网格）内的内容。
 
@@ -16,7 +20,7 @@ CSS Grid 布局由两个核心组成，分别是 **container**（父元素）和
 
 ## 1. Grid Container
 
-设置了 `display: gird ` 的元素。 这是所有grid item的直接父项。 在下面的例子中，`.container` 就是是 grid container。
+网格容器->设置了 `display: gird ` 的元素。 这是所有grid item的直接父项。 在下面的例子中，`.container` 就是是 grid container。
 
 ```html
 <ul class="container" style="display:grid;">
@@ -28,7 +32,7 @@ CSS Grid 布局由两个核心组成，分别是 **container**（父元素）和
 
 ## 2. Grid Item
 
-Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `.sub-item`不是。
+网格项 -> Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `.sub-item`不是。
 
 ```html
 <ul class="container" style="display:grid;">
@@ -40,7 +44,9 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 
 ## 3. Grid Line
 
-这个分界线组成网格结构。 它们既可以是垂直的（*column grid lines*），也可以是水平的（*row grid lines*），并位于行或列的任一侧。 下面例中的黄线就是一个列网格线。
+划分网格的线，称为"网格线"（grid line）。水平网格线划分出行，垂直网格线划分出列。
+
+正常情况下，`n`行有`n + 1`根水平网格线，`m`列有`m + 1`根垂直网格线，比如三行就有四根水平网格线。
 
 ![](./IMGS/grid-line.jpeg)
 
@@ -62,7 +68,7 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 
 ![](./IMGS/grid-area.jpeg)
 
-# 四、网格容器属性
+# 四、容器属性
 
 ## 01. display
 
@@ -71,6 +77,12 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 ```css
 .container { display: grid | inline-grid; }
 ```
+
+https://jsbin.com/qatitav/edit?html,css,output
+
+https://jsbin.com/guvivum/edit?html,css,output
+
+> 注意，设为网格布局以后，容器子元素（项目）的`float`、`display: inline-block`、`display: table-cell`、`vertical-align`和`column-*`等设置都将失效。
 
 ## 02. grid-template-columns、grid-template-rows
 
@@ -103,7 +115,7 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 - 当你在 网格轨道(Grid Track) 值之间留出空格时，网格线会自动分配正数和负数名称，计数从1或-1开始。
 - 你可以用中括号明确指定网格线名称，如果要设置多个名称用空格隔开。
 - 如果你的定义包含多个重复值，则可以使用 `repeat()` 表示法来简化定义。
-- 你可以使用 `fr` 单位平分剩余控件。
+- 你可以使用 `fr` 单位平分剩余空间。
 
 ## 03. grid-template-areas
 
@@ -126,12 +138,11 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 
 ```css
 .container {
-    width: 1100px;
-    margin: 10px auto;
     color: #fff;
     display: grid;
-    grid-template-rows: 150px 500px 200px;
-    grid-template-columns: 90% 10%;
+    grid-template-rows: 100px 400px 100px;
+    grid-template-columns: 80% calc(20% - 10px);
+    grid-gap: 10px;
     grid-template-areas:
         "header header"
         "ct aside"
@@ -140,25 +151,25 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 
 /* 头部 */
 .head {
-    background: #555;
+    background: orange;
     grid-area: header;
 }
 
 /* 尾部 */
 .foot {
-    background: #555;
+    background: pink;
     grid-area: footer;
 }
 
 /* 内容 */
 .ct {
-    background: pink;
+    background: green;
     grid-area: ct;
 }
 
 /* 侧边栏 */
 .aside {
-    background: orange;
+    background: cornflowerblue;
     grid-area: aside;
 }
 ```
@@ -176,8 +187,6 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
   grid-gap: <grid-row-gap> <grid-column-gap>;
 }
 ```
-
-
 
 ```css
 .container {
@@ -385,12 +394,14 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 
 ## 01. grid-column、grid-row
 
+
+
 通过指定特定的网格线来确定网格项在网格中的位置。
 
-```
+```css
 .item {
-	grid-row: <start-line> <end-line>;
-	grid-column: <start-line> <end-line>;
+	grid-row: <start-line>/<end-line>;
+	grid-column: <start-line>/<end-line>;
 }
 ```
 
@@ -422,6 +433,12 @@ Grid 容器的直接子元素。下面的 `.item` 元素就是 grid item，但 `
 ## 05. place-self
 
 类似于`lace-items` ，是设置 `align-self` 和 `justify-self` 的简写形式。
+
+# 六、参考链接
+
+<https://css-tricks.com/snippets/css/complete-guide-grid/>
+
+
 
 
 

@@ -16,7 +16,7 @@ CSS Grid 布局由两个核心组成，分别是 **container**（父元素）和
 
 > 提示：浏览器支持的详细数据可在[Caniuse](https://caniuse.com/#feat=css-grid)查看。其中里面的数字表示该版本以上的浏览器支持Grid。
 
-# 三、重要术语
+# 三、概念
 
 ## 1. Grid Container
 
@@ -68,6 +68,10 @@ CSS Grid 布局由两个核心组成，分别是 **container**（父元素）和
 
 ![](./IMGS/grid-area.jpeg)
 
+# 四、技巧
+
+要熟练掌握一门技术，核心就是找到其最基本的套路，然后不断练习从而可以在之后的实践过程中减少决策的时间。所以，这一部分主要就是介绍网格布局构建过程中的一些常用套路。 这里我们要解决的问题是，如何利用最基本的规则来构建出理想的布局模型。在布局过程中，归根结底需要处理的就两种页面元素：父容器和子元素。前者主要用来设置基础的布局框架，相当于建筑中的设计蓝图，而后者就是用来进行个性化的布局调整。因此我个人归纳了在使用网格布局过程中的套路是：针对父容器元素进行设置需要三个步骤：定框架、设间隔和找对齐，对子元素来说有两个步骤：摆位置和找对齐。我把它们统称为 **“32构建之法”**。
+
 # 四、容器属性
 
 ## 01. display
@@ -117,7 +121,17 @@ https://jsbin.com/guvivum/edit?html,css,output
 - 如果你的定义包含多个重复值，则可以使用 `repeat()` 表示法来简化定义。
 - 你可以使用 `fr` 单位平分剩余空间。
 
-## 03. grid-template-areas
+## 03. grid-template
+
+该属性用于简写 *grid-template-columns* 和 *grid-template-rows*，其语法形式如下：
+
+```css
+.container {
+	grid-template: grid-template-rows / grid-template-columns
+}
+```
+
+## 04. grid-template-areas
 
 通过引用 [`grid-area`](https://www.css88.com/archives/8510#prop-grid-area) 属性指定的网格区域名称来定义网格模板。重复网格区域的名称导致内容跨越这些单元格。一个点号（`.`）代表一个空单元格。这个语法本身可视作网格的可视化结构。
 
@@ -178,7 +192,7 @@ https://jsbin.com/guvivum/edit?html,css,output
 
 ![](./IMGS/grid-template-areas.png)
 
-## 04. grid-gap
+## 05. grid-gap
 
 设置网格间距，其语法形式如下：
 
@@ -202,9 +216,9 @@ https://jsbin.com/guvivum/edit?html,css,output
 
 > 提示：只能在 列/行 之间创建间距，网格外部边缘不会有这个间距。
 
-## 05. justify-items
+## 06. justify-items
 
-沿着 **inline** 轴线对齐网格项。此值适用于容器内的所有网格项。
+设置子元素在网格单元格里沿着主轴的对齐方式。
 
 值：
 
@@ -257,9 +271,9 @@ https://jsbin.com/guvivum/edit?html,css,output
 
 > 注意：这些行为也可以通过每个单独网格项(grid items) 的 [`justify-self`](https://www.css88.com/archives/8510#prop-justify-self) 属性设置
 
-## 06. align-items
+## 07. align-items
 
-沿着 **block**轴线对齐网格项。此值适用于容器内的所有网格项。
+设置子元素在网格单元格里沿着交叉轴的对齐方式。
 
 值：
 
@@ -278,7 +292,7 @@ https://jsbin.com/guvivum/edit?html,css,output
 
 > 提示：*align-items* 与 *justify-items* 效果类似，只是方向不同，*align-items* 控制垂直方向的对齐方式，*justify-items* 控制水平方向的对齐方式，这里不再演示。
 
-## 07. place-items
+## 08. place-items
 
 `place-items` 是设置 `align-items` 和 `justify-items` 的简写形式。其语法形式如下：
 
@@ -292,7 +306,7 @@ https://jsbin.com/guvivum/edit?html,css,output
 
 > 注意：除 Edge 之外的所有主要浏览器都支持 `place-items` 简写属性。
 
-## 08. justify-content
+## 09. justify-content
 
 有时，你的网格合计大小可能小于其网格容器（grid container）大小。 如果你的所有 网格项（grid items）都使用像 `px` 这样的非灵活单位设置大小，就可能出现这种情况。在这种情况下，您可以设置网格容器内的网格的对齐方式。此属性沿着 *inline*（行/水平/X）轴线对齐网格。
 
@@ -372,11 +386,11 @@ https://jsbin.com/guvivum/edit?html,css,output
 
 ![](imgs/justify-content-space-evenly.svg)
 
-## 09. align-content
+## 10. align-content
 
 该属性与 *justify-content* 完全类似，二者都是在网格合计大小小于其网格容器大小时指定网格在网格容器中的对齐方式。唯一的区别在  *justify-content* 控制的是水平方向的对齐方式，而 *align-content* 控制的是垂直方向的对齐方式。这里不再累述。
 
-## 10. place-content 
+## 11. place-content 
 
 `place-content` 是设置 `align-content` 和 `justify-content` 的简写形式。语法形式如下：
 
@@ -394,14 +408,12 @@ https://jsbin.com/guvivum/edit?html,css,output
 
 ## 01. grid-column、grid-row
 
-
-
 通过指定特定的网格线来确定网格项在网格中的位置。
 
 ```css
 .item {
-	grid-row: <start-line>/<end-line>;
-	grid-column: <start-line>/<end-line>;
+	grid-row: grid-row-start / grid-row-end:;
+	grid-column: grid-column-start/ grid-column-end;
 }
 ```
 
@@ -437,6 +449,8 @@ https://jsbin.com/guvivum/edit?html,css,output
 # 六、参考链接
 
 <https://css-tricks.com/snippets/css/complete-guide-grid/>
+
+![](./IMGS/grid.jpeg)
 
 
 

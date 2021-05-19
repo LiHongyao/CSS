@@ -1,74 +1,65 @@
+
+
+
+
 # 一、前言
 
-BFC全称是Block Formatting Context，即块级格式化上下文。BFC最初被定义在CSS2.1规范的[Visual formatting model](https://link.zhihu.com/?target=https%3A//www.w3.org/TR/CSS2/visuren.html)中。
+在讲 BFC 之前，我们先来了解一下常见的定位方案，定位方案是控制元素的布局，有三种常见方案:
 
-我们先来看看w3c对于BFC的定义：
+- 普通流 (normal flow)
 
-> Floats, absolutely positioned elements, block containers (such as inline-blocks, table-cells, and table-captions) that are not block boxes, and block boxes with 'overflow' other than 'visible' (except when that value has been propagated to the viewport) establish new block formatting contexts for their contents.
+> 在普通流中，元素按照其在 HTML 中的先后位置至上而下布局，在这个过程中，行内元素水平排列，直到当行被占满然后换行，块级元素则会被渲染为完整的一个新行，除非另外指定，否则所有元素默认都是普通流定位，也可以说，普通流中元素的位置由该元素在 HTML 文档中的位置决定。
 
-也就是说，有这样几种情况会创建BFC：
+- 浮动 (float)
 
-- 根元素（\<html />）或其他包含它的元素
-- 浮动元素
-- 绝对定位元素
-- 非块级盒子的块级容器（inline-blocks, table-cells, table-captions等）
-- overflow不为visiable的块级盒子
+> 在浮动布局中，元素首先按照普通流的位置出现，然后根据浮动的方向尽可能的向左边或右边偏移，其效果与印刷排版中的文本环绕相似。
 
-要想明白BFC到底是什么，首先来看看什么是Visual formatting model。
+- 绝对定位 (absolute positioning)
 
-**➦ 视觉格式化模型（Visual Formatting Model）**
+> 在绝对定位布局中，元素会整体脱离普通流，因此绝对定位元素不会对其兄弟元素造成影响，而元素具体的位置由绝对定位的坐标决定。
 
-视觉格式化模型是用来处理文档并将它显示在视觉媒体上的机制，它让视觉媒体知道如何处理文档。（视觉媒体——user agent通常指的浏览器）
+# 二、概念
 
-在视觉格式化模型中，文档树的每个元素根据盒模型生成零个或多个盒子。这些盒子的布局受以下因素控制： <u>盒子的尺寸和类型、定位方案（普通文档流，浮动流和绝对定位流）、文档树中元素间的关系、 外部因素（如视口大小，图像本身的尺寸等）</u>。
+Formatting context（格式化上下文） 是 W3C CSS2.1 规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。
 
-**➦ 普通文档流**
+那么 BFC 是什么呢？
 
-普通文档流是一种定位方案。
+BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述定位方案的普通流。
 
-在CSS2.1中，普通文档流包括： 块级盒子的块级格式化上下文/内联级盒子的内联格式化上下文 /块级和内联级盒子的相对定位
+**具有 BFC 特性的元素可以看作是隔离了的 <mark>独立容器</mark>，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。**
 
-在普通文档流内的盒子属于格式化上下文（Formatting Context）。可以属于块级或者内联级，但不能同时属于。块级盒子属于块级格式化上下文。内联盒子属于内联格式化上下文。
-
-**➦ 格式化上下文（Formatting Context）**
-
-Formatting Context，既格式化上下文。用于决定如何渲染文档的一个区域。
-
-不同的盒子使用不同的格式化上下文来布局。
-
-每个格式化上下文都拥有一套不同的渲染规则，他决定了其子元素将如何定位，以及和其他元素的关系和相互作用。
-
-不明白没关系，你可以简单理解为格式化上下文就是**为盒子准备的一套渲染规则**。
+通俗一点来讲，可以把 BFC 理解为一个封闭的大箱子，箱子内部的元素无论如何翻江倒海，都不会影响到外部。
 
 常见的格式化上下文有这样几种：
 
-- 【Block formatting context】(BFC)
+- Block Formatting Context（BFC）
 
-- 【Inline formatting context】(IFC)
+- Inline Formatting Context（IFC）
 
-- 【Grid formatting context】(GFC)
+- Grid Formatting Context（GFC）
 
-- [Flex formatting context](FFC)
+- Flex Formatting Context（FFC）
 
-# 二、范围
+# 三、触发BFC
 
-> A block formatting context contains everything inside of the element creating it that is not also inside a descendant element that creates a new block formatting context.
+只要元素满足下面任一条件即可触发 BFC 特性：
 
-一个BFC包含创建该上下文元素的所有子元素，但不包括创建了新BFC的子元素的内部元素。
+- 根元素（`<html>`）
+- 浮动元素（`!none`）
+- 绝对定位元素（`fixed && absolute`）
+- display（`inline-block && table-cells && flex`）
+- overflow（`!visible `）
 
-换句话说，一个元素不能同时存在两个BFC中
+# 四、特性 & 作用
 
-# 三、特性
+- BFC内的两个相邻块级元素垂直方向发生边距重叠（比如margin-top/bottom重叠）
+- 每个盒子的左外边与容器的左边接触（从右到左的格式化则相反），即使存在浮动也是如此，除非盒子建立了新的块格式化上下文；
+- 形成了BFC的区域不会与float box重叠（图文环绕）；
+- 计算BFC的高度时，浮动子元素也参与计算（清除浮动）；
 
-- 盒子从顶部开始垂直排列
-- 两个相邻的盒子之间的垂直距离由外边距（既margin）决定
-- 块级格式化上下文中相邻的盒子之间的垂直边距折叠
-- 每个盒子的左外边与容器的左边接触（从右到左的格式化则相反），即使存在浮动也是如此，除非盒子建立了新的块格式化上下文
-- 形成了BFC的区域不会与float box重叠
-- 计算BFC的高度时，浮动子元素也参与计算
+# 五、参考
 
-# 四、参考
-
-- [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
-- [这一次，完全弄懂BFC](https://zhuanlan.zhihu.com/p/80855885)
+- [MDN >>](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
+- [这一次，完全弄懂BFC >>](https://zhuanlan.zhihu.com/p/80855885)
+- [10 分钟理解 BFC 原理 >>](https://zhuanlan.zhihu.com/p/25321647)
 

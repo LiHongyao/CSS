@@ -299,6 +299,78 @@ Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型�
 
 ![](IMGS/flex_align_self.png)
 
+# # 实际使用
+
+在开发中，我们经常会遇到如下布局：
+
+![](./IMGS/flex-layouts.png)
+
+布局代码如下：
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex-layouts</title>
+    <style>
+      .wrap {
+        /* 核心代码 */
+        display: flex;
+        flex-flow: row wrap;
+        align-content: flex-start;
+      }
+      .item {
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: cornflowerblue;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 6px;
+        /* 核心代码 */
+        flex: 0 0 calc((100% - 3 * 10px) / 4);
+      }
+      .item:not(:nth-child(4n)) {
+        margin-right: 10px;
+      }
+      .item:not(:nth-last-child(-n + 4)) {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <section class="item">1</section>
+      <section class="item">2</section>
+      <section class="item">3</section>
+      <section class="item">4</section>
+      <section class="item">5</section>
+      <section class="item">6</section>
+      <section class="item">7</section>
+      <section class="item">8</section>
+      <section class="item">9</section>
+      <section class="item">10</section>
+      <section class="item">11</section>
+      <section class="item">12</section>
+      <section class="item">13</section>
+      <section class="item">14</section>
+      <section class="item">15</section>
+      <section class="item">16</section>
+      <section class="item">17</section>
+      <section class="item">18</section>
+      <section class="item">19</section>
+      <section class="item">20</section>
+      <section class="item">21</section>
+      <section class="item">22</section>
+    </div>
+  </body>
+</html>
+```
+
 
 
 # # 友情链接

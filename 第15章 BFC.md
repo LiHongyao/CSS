@@ -24,7 +24,7 @@ Formatting context（格式化上下文） 是 W3C CSS2.1 规范中的一个概�
 
 那么 BFC 是什么呢？
 
-BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述定位方案的普通流。
+BFC 即 **B**lock **F**ormatting **C**ontexts (块级格式化上下文)，它属于上述定位方案的普通流。
 
 **具有 BFC 特性的元素可以看作是隔离了的 <mark>独立容器</mark>，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。**
 

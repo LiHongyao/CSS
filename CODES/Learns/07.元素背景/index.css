@@ -1,0 +1,14 @@
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rahmen {
+  width: 400px;
+  height: 600px;
+  border: 2px solid #eee;
+  padding: 8px;
+  background: url('./images/pictures.jpeg') no-repeat center center / cover;
+  background-clip: content-box;
+}

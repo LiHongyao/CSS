@@ -1,6 +1,6 @@
-> 本文参考 [阮一峰 Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool) 
-
 Flexbox 演示站：https://xluos.github.io/demo/flexbox/
+
+MDN：https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex
 
 # 一、概述
 
@@ -67,7 +67,7 @@ Webkit 内核的浏览器，必须加上`-webkit-` 前缀。
 - `flex-wrap`
 - `flex-flow`
 - `justify-content`
-- align-items
+- `align-items`
 - `align-content`
 
 ## 1、flex-direction *

@@ -6,15 +6,15 @@
 
 在讲 BFC 之前，我们先来了解一下常见的定位方案，定位方案是控制元素的布局，有三种常见方案:
 
-- 普通流 (normal flow)
+- 普通流 (Normal-Flow)
 
 > 在普通流中，元素按照其在 HTML 中的先后位置至上而下布局，在这个过程中，行内元素水平排列，直到当行被占满然后换行，块级元素则会被渲染为完整的一个新行，除非另外指定，否则所有元素默认都是普通流定位，也可以说，普通流中元素的位置由该元素在 HTML 文档中的位置决定。
 
-- 浮动 (float)
+- 浮动 (Float)
 
 > 在浮动布局中，元素首先按照普通流的位置出现，然后根据浮动的方向尽可能的向左边或右边偏移，其效果与印刷排版中的文本环绕相似。
 
-- 绝对定位 (absolute positioning)
+- 绝对定位 (Absolut-Position)
 
 > 在绝对定位布局中，元素会整体脱离普通流，因此绝对定位元素不会对其兄弟元素造成影响，而元素具体的位置由绝对定位的坐标决定。
 
@@ -32,30 +32,31 @@ BFC 即 **B**lock **F**ormatting **C**ontexts (块级格式化上下文)，它�
 
 常见的格式化上下文有这样几种：
 
-- Block Formatting Context（BFC）
+- BFC：**B**lock **F**ormatting **C**ontext
 
-- Inline Formatting Context（IFC）
+- IFC：**I**nline **F**ormatting **C**ontext
 
-- Grid Formatting Context（GFC）
+- GFC：**G**rid **F**ormatting **C**ontext
 
-- Flex Formatting Context（FFC）
+- FFC：**F**lex **F**ormatting **C**ontext
 
 # 三、触发BFC
 
 只要元素满足下面任一条件即可触发 BFC 特性：
 
-- 根元素（`<html>`）
-- 浮动元素（`!none`）
-- 绝对定位元素（`fixed && absolute`）
-- display（`inline-block && table-cells && flex`）
-- overflow（`!visible `）
+- 根元素：`<html>`
+- 浮动元素：`!none`
+- 绝对定位元素：`fixed && absolute`
+- display：`inline-block && table-cell && flex`
+- overflow：`!visible `
 
-# 四、特性 & 作用
+# 四、解决了什么问题❓
 
-- BFC内的两个相邻块级元素垂直方向发生边距重叠（比如margin-top/bottom重叠）
-- 每个盒子的左外边与容器的左边接触（从右到左的格式化则相反），即使存在浮动也是如此，除非盒子建立了新的块格式化上下文；
-- 形成了BFC的区域不会与float box重叠（图文环绕）；
-- 计算BFC的高度时，浮动子元素也参与计算（清除浮动）；
+BFC（块级格式化上下文）解决了以下问题：
+
+1. 清除浮动：在一个元素内创建 BFC，可以防止浮动元素溢出到其父元素外部。
+2. 避免 margin 重叠：处于同一 BFC 内的相邻块级元素的垂直 margin 不会重叠。
+3. 创建独立的布局上下文：BFC 可以将一个元素从文档流中拆分出来，使其不受外部元素影响，从而实现更精细的布局。
 
 # 五、参考
 

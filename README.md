@@ -4,6 +4,8 @@ CSS（Cascading Style Sheets，层叠样式表），用于设置HTML标签的样
 
 ![](IMGS/css.jpg)
 
+This is Note
+
 # 二、引入方式
 
 使用样式表主要有4种方式：**行内样式**、**内嵌样式**、**外链样式**、**导入式**。

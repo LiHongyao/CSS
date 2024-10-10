@@ -1,0 +1,224 @@
+/* Extra values we can use if we decide we need more control in the future */
+.cm-header {
+  font-weight: bold;
+}
+
+.cm-strong {
+  font-weight: bold;
+}
+
+.cm-em {
+  font-style: italic;
+}
+
+:root {
+  --editor-top-bar-background: black;
+  --tab-bg: #131417;
+  --tab-border-color: #2a2c33;
+  --resizer-background: var(--editor-top-bar-background);
+  --resizer-border: #242424;
+}
+
+.CodeMirror-cursor {
+  border-left-color: white !important;
+}
+
+.cm-fat-cursor .CodeMirror-cursor {
+  background: #13ff0f !important;
+  border-left-color: transparent !important;
+  opacity: 0.5;
+}
+
+.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.CodeMirror-focused .CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.CodeMirror-matchingbracket {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.CodeMirror-matchingtag {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cm-searching {
+  background: black;
+  outline: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.CodeMirror-hints,
+.emmet-abbreviation-preview {
+  border: 1px solid #5a5f73;
+  background: #1e1f26;
+}
+
+.CodeMirror-hint {
+  color: white;
+}
+
+li.CodeMirror-hint-active {
+  background: #c7c9d3;
+  color: black;
+}
+
+/* Projects */
+.project-editor-warning {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.editor-footer {
+  border-top-color: var(--resizer-border, var(--cp-color-6));
+}
+
+.cm-keyword {
+  color: #ffdd40;
+}
+
+.cm-atom {
+  color: #a3d65a;
+}
+
+.box-html .cm-atom {
+  color: #ff3c41;
+}
+
+.cm-def {
+  color: #0ebeff;
+}
+
+.cm-variable {
+  color: #c7c9d3;
+}
+
+.cm-variable-2 {
+  color: #47cf73;
+}
+
+.cm-variable-3 {
+  color: white;
+}
+
+.cm-header {
+  color: #ff3c41;
+}
+
+.cm-number {
+  color: #2bc7b9;
+}
+
+.cm-property {
+  color: #5e91f2;
+}
+
+.cm-attribute {
+  color: #e3e4e8;
+}
+
+.cm-builtin {
+  color: #ae63e4;
+}
+
+.cm-qualifier {
+  color: #ffdd40;
+}
+
+.cm-operator {
+  color: #47cf73;
+}
+
+.cm-meta {
+  color: #0ebeff;
+}
+
+.cm-string {
+  color: #2bc7b9;
+}
+
+.cm-string-2 {
+  color: #d75093;
+}
+
+.cm-tag {
+  color: #ffdd40;
+}
+
+.box-css .cm-tag {
+  color: #ff8d41;
+}
+
+.cm-tag.cm-bracket {
+  color: #9b9dad;
+}
+
+.cm-comment {
+  color: #88afbf;
+}
+
+body.editor {
+  background: #131417;
+}
+
+.box.box.box,
+.editor .top-boxes,
+.CodeMirror-gutter-wrapper,
+body.project .editor-pane,
+body.project .editor {
+  background: #131417;
+}
+.box.box.box pre,
+.editor .top-boxes pre,
+.CodeMirror-gutter-wrapper pre,
+body.project .editor-pane pre,
+body.project .editor pre {
+  color: #d5d7de;
+}
+
+.CodeMirror-guttermarker-subtle,
+.CodeMirror-linenumber {
+  color: rgba(113, 119, 144, 0.6);
+}
+
+#output pre::-webkit-scrollbar,
+#output iframe::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+#output pre::-webkit-scrollbar-thumb,
+#output iframe::-webkit-scrollbar-thumb {
+  background: #373c49;
+  border-radius: 1px;
+}
+#output pre::-webkit-scrollbar-track,
+#output iframe::-webkit-scrollbar-track {
+  background: transparent;
+}
+#output pre::-webkit-scrollbar-corner,
+#output iframe::-webkit-scrollbar-corner {
+  background: transparent;
+}
+@supports not selector(::-webkit-scrollbar) {
+  #output pre,
+  #output iframe {
+    scrollbar-color: #373c49 transparent;
+    scrollbar-width: thin;
+  }
+}
+
+.CodeMirror-simplescroll-horizontal div,
+.CodeMirror-simplescroll-vertical div {
+  background: #373c49;
+}
+
+.powers .mini-button {
+  background: #444857;
+}
+.powers .mini-button:hover, .powers .mini-button:focus {
+  background: #c7c9d3;
+}
+.powers .mini-button:hover svg, .powers .mini-button:focus svg {
+  fill: black;
+}

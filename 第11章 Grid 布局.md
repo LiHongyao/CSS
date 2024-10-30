@@ -6,9 +6,7 @@
 
 ![](./IMGS/grid.png)
 
-上图这样的布局，就是 Grid 布局的拿手好戏。
-
-CSS Grid 布局由两个核心组成，分别是 **container**（父元素）和 **items**（子元素）。 container 是实际的 grid（网格），items 是 grid（网格）内的内容。
+上图这样的布局，就是 Grid 布局的拿手好戏。Grid 布局由两个核心组成，分别是 **网格容器** 和 **网格项**。
 
 本文参考：https://css-tricks.com/snippets/css/complete-guide-grid/
 
@@ -69,6 +67,8 @@ CSS Grid 布局由两个核心组成，分别是 **container**（父元素）和
 <img src="./IMGS/grid-area.svg" width="400" />
 
 # 四、技巧
+
+要开始使用，你首先需要将一个容器元素定义为网格，使用 display: grid，然后通过 grid-template-columns 和 grid-template-rows 设置列和行的大小，接着使用 grid-column 和 grid-row 将其子元素放置到网格中。与 flexbox 类似，网格项的源顺序并不重要，你可以通过 CSS 将它们放置在任何位置，这使得使用媒体查询来重新排列网格变得非常简单。
 
 要熟练掌握一门技术，核心就是找到其最基本的套路，然后不断练习从而可以在之后的实践过程中减少决策的时间。所以，这一部分主要就是介绍网格布局构建过程中的一些常用套路。 
 
@@ -575,11 +575,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 }
 ```
 
-
-
-
-
-
+<img src="./imgs/align-content-start.svg" width="400"/>
 
 ```css
 .container {

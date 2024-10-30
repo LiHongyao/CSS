@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(750px, 750px));
+        justify-content: center;
+      }
+      /* 当容器内只有一个 item 时，使其居中 */
+      .container:only-child {
+        place-items: center;
+      }
+      .item {
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">
+        <div style="height: 100px">3</div>
+      </div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </body>
+</html>

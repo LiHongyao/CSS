@@ -1,4 +1,4 @@
-# 一、概述
+# 概述
 
 [Grid 布局 >>](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout) 擅长于将一个页面划分为几个主要区域，以及定义这些区域的大小、位置、层次等关系。
 
@@ -10,15 +10,15 @@
 
 本文参考：https://css-tricks.com/snippets/css/complete-guide-grid/
 
-# 二、兼容性
+# 兼容性
 
 截至目前，几乎所有的主流浏览器均已支持网格布局，详细数据可在 [caniuse >>](https://caniuse.com/?search=grid) 查看
 
-# 三、相关术语
+# 相关术语
 
 在深入研究网格概念之前，理解术语是很重要的。由于这里涉及的术语在概念上都有点相似，如果您不首先记住网格规范定义的含义，就很容易将它们相互混淆。不过别担心，它们并不多。
 
-## 1. 网格容器
+## 网格容器
 
 网格容器是只使用了 `grid` 或 `inline-grid`属性 的元素，这是所有网格项的直接父项，在下面的例子中，`div.container` 就是一个网格容器
 
@@ -30,7 +30,7 @@
 </div>
 ```
 
-## 2. 网格项
+## 网格项
 
 网格容器的直接子元素。下面的 `div.item` 元素就是网格项，但 `span.sub-item`不是。
 
@@ -42,31 +42,31 @@
 </div>
 ```
 
-## 3. 网格线
+## 网格线
 
 构成网格结构的分隔线。它们可以是垂直的(“列网格线”)，也可以是水平的(“行网格线”)，位于行或列的两侧。这里的黄线是一个列网格线的例子。
 
 <img src="./IMGS/grid-line.svg" width="400" />
 
-## 4. 网格单元
+## 网格单元
 
 两个相邻行和两个相邻列网格线之间的空间。它是网格的一个“单元”。这里是行网格线1和2，列网格线2和3之间的网格单元格。
 
 <img src="./IMGS/grid-cell.svg" width="400" />
 
-## 5. 网格轨道
+## 网格轨道
 
 两个相邻网格线之间的空间。 你可以把它们想象成网格的列或行。 下面是第二行和第三行网格线之间的网格轨道。
 
 <img src="./IMGS/grid-track.svg" width="400" />
 
-## 6. 网格区域
+## 网格区域
 
 总空间由四条网格线包围。网格区域可以由任意数量的网格单元组成。这里是行网格线1和3，列网格线1和3之间的网格区域。
 
 <img src="./IMGS/grid-area.svg" width="400" />
 
-# 四、技巧
+# 技巧
 
 要开始使用，你首先需要将一个容器元素定义为网格，使用 display: grid，然后通过 grid-template-columns 和 grid-template-rows 设置列和行的大小，接着使用 grid-column 和 grid-row 将其子元素放置到网格中。与 flexbox 类似，网格项的源顺序并不重要，你可以通过 CSS 将它们放置在任何位置，这使得使用媒体查询来重新排列网格变得非常简单。
 
@@ -88,9 +88,9 @@
 
 **“3+2构建之法”** 就是将整个网格布局的构建归纳为这五个关键步骤，通过这种简化的套路，可以帮助你在布局时减少思考和决策时间，更加高效地完成设计。
 
-# 五、父属性·网格容器
+# 父属性·网格容器
 
-## 01. display
+## display
 
 将元素定义为网格容器，并为其内容建立新的网格格式上下文。
 
@@ -105,7 +105,7 @@
 
 > 提示：float、display: inline-block、display: table-cell、vertical-align 和column-* 属性对网格项没有影响。
 
-## 02. grid-template-columns、grid-template-rows
+## grid-template-columns、grid-template-rows
 
 用空格分隔的值列表定义网格的列和行。这些值表示轨道大小，它们之间的间距表示网格线。 
 
@@ -201,7 +201,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 }
 ```
 
-## 03. grid-template-areas
+## grid-template-areas
 
 通过引用使用 grid-area 属性指定的网格区域名称来定义网格模板。重复网格区域的名称会使内容跨越多个单元格。句号表示一个空单元格。该语法本身可以直观地展示网格的结构。
 
@@ -256,7 +256,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 请注意，你并没有使用这种语法来命名线条，只是在命名区域。当你使用这种语法时，区域两端的线条实际上是自动命名的。如果你的网格区域名称是 foo，那么该区域的起始行线和起始列线的名称将是 foo-start，最后一行线和最后一列线的名称将是 foo-end。这意味着某些线条可能会有多个名称，例如上面示例中的最左边的线条，将会有三个名称：header-start、main-start 和 footer-start。
 
-## 03. grid-template
+## grid-template
 
 一个简写方式可以在单个声明中同时设置 grid-template-rows、grid-template-columns 和 grid-template-areas。
 
@@ -296,7 +296,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 由于 grid-template 不会重置隐式网格属性（如 grid-auto-columns、grid-auto-rows 和 grid-auto-flow），而在大多数情况下你可能希望重置这些属性，因此建议使用 grid 属性来代替 grid-template。
 
-## 05. column-gap、row-gap
+## column-gap、row-gap
 
 指定网格线的大小。你可以将其理解为设置列或行之间的间隙宽度（也就是“沟槽”的宽度）
 
@@ -323,7 +323,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 <img src="./imgs/grid-dddgrid-gap.svg" width="400"/>
 
-## 06. gap
+## gap
 
 这是 row-gap 和 column-gap 的简写形式，用于同时设置行间距和列间距。
 
@@ -346,7 +346,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 如果未指定 row-gap，则其值会与 column-gap 相同。
 
-## 07. justify-items
+## justify-items
 
 在行轴（inline axis，横向）上对齐网格项（与 align-items 不同，后者是在块轴（block axis，纵向）上对齐）。此值适用于容器内的所有网格项。
 
@@ -405,7 +405,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 > 注意：这种行为也可以通过 justify-self 属性在单个网格项上进行设置。
 
-## 08. align-items
+## align-items
 
 在块轴（column，纵向）上对齐网格项（与 justify-items 不同，后者是在行轴（row，横向）上对齐）。此值适用于容器内的所有网格项。
 
@@ -461,7 +461,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 还有两个修饰关键字：safe 和 unsafe（用法类似于 align-items: safe end）。safe 关键字的含义是：“尝试以这种方式对齐，但如果这会导致项目移动到无法访问的溢出区域，则不要对齐。” 而 unsafe 则允许内容移动到无法访问的区域，即使这会导致“数据丢失”。
 
-## 09. place-items
+## place-items
 
 `place-items` 是设置 `align-items` 和 `justify-items` 的简写形式。其语法形式如下：
 
@@ -473,7 +473,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 > 提示：如果省略第二个值，则将第一个值同时分配给这两个属性。
 
-## 09. justify-content
+## justify-content
 
 有时你的网格总大小可能小于其网格容器的大小。如果所有网格项的尺寸都使用非弹性单位（如 px）定义，这种情况就可能发生。在这种情况下，你可以设置网格在网格容器内的对齐方式。该属性会沿着行轴（inline axis，横向）对齐网格（不同于 align-content，它是沿着块轴（block axis，纵向）对齐网格的）。
 
@@ -549,7 +549,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 <img src="./imgs/justify-content-space-evenly.svg" width="400"/>
 
-## 10. align-content
+## align-content
 
 有时你的网格总大小可能会小于网格容器的大小。如果所有网格项的尺寸都使用非弹性单位（如 px）定义，这种情况可能发生。在这种情况下，你可以设置网格在网格容器内的对齐方式。该属性会沿着块轴（block axis，纵向）对齐网格（不同于 justify-content，它是沿着行轴（row，横向）对齐网格的）。
 
@@ -625,7 +625,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 <img src="./imgs/align-content-space-evenly.svg" width="400"/>
 
-## 11. place-content 
+## place-content 
 
 `place-content` 是设置 `align-content` 和 `justify-content` 的简写形式。语法形式如下：
 
@@ -637,7 +637,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 > 提示：如果省略第二个值，则将第一个值同时分配给这两个属性。
 
-## 12. grid-auto-columns、grid-auto-rows
+## grid-auto-columns、grid-auto-rows
 
 指定自动生成的网格轨道（也称为隐式网格轨道）的大小。当网格项数量超过网格中的单元格数，或某个网格项被放置在显式网格之外时，会创建隐式轨道。（参见显式网格与隐式网格的区别）
 
@@ -688,7 +688,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 <img src="./imgs/grid-auto-columns-rows-03.svg" width="400"/>
 
-## 13. grid-auto-flow
+## grid-auto-flow
 
 如果你有未明确放置在网格中的网格项，自动布局算法将会自动为它们分配位置。这个属性可以控制自动布局算法的工作方式。
 
@@ -759,9 +759,9 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 <img src="./imgs/grid-auto-flow-02.svg" width="400"/>
 
-# 六、子属性·网格项
+# 子属性·网格项
 
-## 01. grid-column-start、grid-column-end、grid-row-start、grid-row-end
+## grid-column-start、grid-column-end、grid-row-start、grid-row-end
 
 通过引用特定的网格线来确定网格项在网格中的位置。grid-column-start/grid-row-start 是项开始的线，而 grid-column-end/grid-row-end 是项结束的线。
 
@@ -807,7 +807,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 项可以重叠。你可以使用 z-index 来控制它们的堆叠顺序。
 
-## 02. grid-column、grid-row
+## grid-column、grid-row
 
 分别是 grid-column-start + grid-column-end 和 grid-row-start + grid-row-end 的简写。
 
@@ -833,7 +833,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 如果没有声明结束线值，该项目将默认跨越 1 个轨道。
 
-## 02. grid-area
+## grid-area
 
 给项目一个名称，以便可以通过使用 grid-template-areas 属性创建的模板进行引用。或者，该属性也可以用作 grid-row-start + grid-column-start + grid-row-end + grid-column-end 的更短的简写形式。
 
@@ -866,7 +866,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 <img src="./imgs/grid-area-s.svg" width="400"/>
 
-## 03. justify-self
+## justify-self
 
 在单元格内沿着行轴（inline axis）对齐网格项（与 align-self 沿列轴（block axis）对齐相对）。此值适用于单个单元格内的网格项。
 
@@ -917,7 +917,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 要为网格中的所有项目设置对齐方式，可以通过网格容器的 justify-items 属性来实现这一行为。
 
-## 04. align-self
+## align-self
 
 在单个网格单元内，沿着块（列）轴对齐网格项（与 justify-self 相对，后者沿着行轴对齐）。此值适用于单个网格项内的内容。
 
@@ -968,7 +968,7 @@ fr 单位允许你将轨道的大小设置为网格容器中剩余空间的一�
 
 要对齐网格中的所有项，这种行为也可以通过 align-items 属性在网格容器上设置。
 
-## 05. place-self
+## place-self
 
 place-self 在一个声明中同时设置 align-self 和 justify-self 属性。
 
@@ -1001,9 +1001,9 @@ place-self 在一个声明中同时设置 align-self 和 justify-self 属性。
 
 > 提示：除了 Edge 以外，所有主要浏览器都支持 place-self 简写属性。
 
-# 七、特殊单位和函数
+# 特殊单位和函数
 
-## 1. fr 单位
+## fr 单位
 
 您可能会在 CSS 网格布局中使用大量分数单位，例如 1fr。它们基本上表示“剩余空间的一部分”。因此，像这样的声明：
 
@@ -1017,7 +1017,7 @@ grid-template-columns: 1fr 3fr;
 grid-template-columns: 50px min-content 1fr;
 ```
 
-## 2. 尺寸关键词
+## 尺寸关键词
 
 在设置行和列的大小时，您可以使用所有常用的长度单位，比如 px、rem、%、等，但您也可以使用以下关键词：
 
@@ -1026,14 +1026,14 @@ grid-template-columns: 50px min-content 1fr;
 - `auto`：这个关键词与 fr 单位非常相似，但在分配剩余空间时，它们在尺寸上会“输给” fr 单位。
 - `fr`：见上文。
 
-## 3. 尺寸函数
+## 尺寸函数
 
 - `fit-content()`：该函数使用可用空间，但绝不会少于最小内容（min-content），也绝不会超过最大内容（max-content）
 - `minmax()`：这个函数显而易见地设置了长度的最小和最大值。这在与相对单位结合使用时非常有用。例如，您可能希望某一列只能缩小到一定程度
 - `min()`
 - `max()`
 
-## 4. repeat
+## repeat
 
 repeat() 函数可以减少输入的工作量：
 
@@ -1064,11 +1064,11 @@ grid-template-columns:
 
 这两个关键字之间的区别在 [这里 >>](https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/) 详细说明
 
-# 八、奇淫技巧
+# 奇淫技巧
 
 https://css-tricks.com/snippets/css/complete-guide-grid/#aa-css-grid-tricks
 
-## 1. 流体列
+## 流体列
 
 流体宽度的列，根据可用空间自动调整为更多或更少的列，无需媒体查询！
 

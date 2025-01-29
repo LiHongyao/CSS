@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+.justify {
+  width: 100px;
+  padding: 0 8px;
+  border: 1px solid #ccc;
+  text-align-last: justify;
+}
+
+.china {
+  font-size: 64px;
+  font-family: "Microsoft YaHei";
+  line-height: 0.8;
+  background: linear-gradient(to bottom, red, green, blue);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 {
+  /* 将标题字体扩展为正常宽度的150% */
+  font-stretch: 150%;
+}
+
+p {
+  /* 将正文字体设置为压缩样式 */
+  font-stretch: condensed;
+}
+
+
